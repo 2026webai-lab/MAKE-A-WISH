@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MAKE A WISH — 流れ星が消える前に、願いを形にする｜HP・EC制作／SNS運用／AI業務効率化</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23040a1f'/%3E%3Cpath d='M16 5l9 21H7z' fill='none' stroke='%23ffc766' stroke-width='2'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#040a1f">
+<meta name="description" content="HATTORI ICHIDAI（服部一大）の、願いを形にするWeb制作。HP・EC制作、Instagram運用・Webマーケティング、AIによる業務効率化、サイトのリニューアルまで。場所を選ばず、リモートで対応します。">
+<meta name="author" content="HATTORI ICHIDAI">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<link rel="canonical" href="https://2026webai-lab.github.io/MAKE-A-WISH/">
+<meta property="og:type" content="website"><meta property="og:url" content="https://2026webai-lab.github.io/MAKE-A-WISH/">
+<meta property="og:title" content="MAKE A WISH — 流れ星が消える前に、願いを形にする｜HP・EC制作／SNS運用／AI業務効率化"><meta property="og:description" content="HATTORI ICHIDAI（服部一大）の、願いを形にするWeb制作。HP・EC制作、Instagram運用・Webマーケティング、AIによる業務効率化、サイトのリニューアルまで。場所を選ばず、リモートで対応します。">
+<meta property="og:image" content="https://2026webai-lab.github.io/MAKE-A-WISH/public/og.jpg"><meta property="og:site_name" content="MAKE A WISH">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --bg:#040a1f; --fg:#eef4ff; --muted:#9fb0d8; --accent:#ffc766;
+    --font-jp:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+    --font-en:"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg)}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font-jp);overflow-x:hidden}
+
+  /* loader */
+  #loader{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:var(--bg);transition:opacity .8s,visibility .8s}
+  #loader.done{opacity:0;visibility:hidden}
+  #loader .box{text-align:center;font-family:var(--font-en);letter-spacing:.3em;font-size:12px;color:var(--muted)}
+  #loader .bar{width:220px;height:1px;background:#222a3a;margin:18px auto 0;overflow:hidden}
+  #loader .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .15s}
+
+  /* header */
+  header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(20px,4vw,56px);font-family:var(--font-en);letter-spacing:.25em;font-size:12px;mix-blend-mode:difference}
+  header a{color:#fff;text-decoration:none}
+
+  /* scroll stage */
+  #stage{position:relative;height:700vh}
+  #sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:#05060a url(data:image/webp;base64,UklGRkwrAABXRUJQVlA4IEArAACwTAGdASrAAxwCPu12slUps7+tItR5Q/AdiWVDPYf82sU1OTFrarq/8aC+0FPJn5LzZvge9l6if6zvOudf09inY6A3ZDMh9C/deXRjPZ4dzf2lVs/NYueeN/+vB//+frVCaSDBmNwPYpAjICxjyZde20sxhnp8dy1p+WMLwtoWMMMUkGKSDFJBikgxSQYpIMWBq7/iPOS+QWIHBdQsEKh/Sw5P5qxX/musPdkGKSDFJBimdTgWELtkcqj0HullMK545BkJbn2cmqSZceDDDFJBiF8Oddu7YWGW/iUl+1WYHlj9J04Amfhy9vq+FB0VipmEQRTr/1P1NqBIlm14PFJApIK3i6HGyfzsqPPhUPaypY9sCLwPADqKZrceIp9wqBi/P2n2Mhka7yF35Q9OLppA5t587YF+1yyrW7ldwagOVZ/yjRMbO18vAR5d2opLYXWMV+opN9x0CtAYeU/LKqtYU63jCPqlfpBgioj0EzwbQcXhcqoLFz4kI40ktyd5jJ8QAtR8V104vxYawUH4JNlNUI37drIVlIY6hzDedxJ8J0aRfTryNWibUxlEN7DxtHyug0r7N1gL3jvylYWnM0v/osbqu5EP/YrI4S8Jp/FJn5OW0Ayciyax6LiSO8tyStV0OHkN6Nqjo0lGyMnavGpQUKdgGjaq9+LquJj/+r0jGOwVzAJ3qNGiRmMLcL97MJPL49oGSCl2s5tXh8vozJc6gj9AUpxM0OI/W+jUqimJsFGTCREpisHltkbxFFmqYkJcMU6W+y3VlVq5BnOsEuQsW6D1dijH5aV+GW8VGIECqWrSeH3x2JPa8tHP0uI4YktSYTnHm/zdShOw/6pvxGNJeFt+nX6vZvwwEOussGNRFICN/IzE4JOyGhYRiVb6uysYh+oe1TxxzFymu5fbTeRk7w2VwGYFf6xFfIWTsce33CAOdNhgBhpAVwiptkJI4/qJPwxU+ep8MeyDxkrOPVx9CtB0alRFch1XpbjuSHBMj7VX0lRqC6LXJll+nDOCr487RcPp7XoIzSc68WxNeWifYk3XynWcCwgudm1venKMFUANrcFp4QU06JVuRlWzG89MqYDI1axeBrF1IDeImbCG6I2eMJleeuFJFQmX8P4p3fjfECwc6Yh+1Zzi6sn5NKFQUtwtKFgy1iA16UT7NQCH9EhrXqdKDwswvPoQo6yfUh4UznidM7tlFYYpzMlmiTCY+ZIE+ORT2D5HvNzxdBUWOQhHR2THge3hQlmtldFnWEQy3MaO5XnFSg4a4ETpPWPW9RRN7lPbhfFRRbdUMdDpBhDJHA9kGJNjBIkS27xFYTjAoid/45WZyoa6UzOwnI5usgXnC2BXasqn4PYozOgIwovQgVIdn++gRF8RnjxT/wpS11fDbQvaRjFIXhoZ1Qq6CDgKhdlEk6MTAm/mJxACARU7GV/PXCdCBxbrs46s7Vv7fjBNJfvDyYwX/Qf7gqV+ltDfsSEtVfET6hEcteWzGC5n7Ha5tsF5MjWN9Sq3Nb92OcGTwotXhegbNQRnFB/an0F50IeazxMZCuNIceGIEXWDElEVspJlKPn3xjkgv8Jw9w8F7z81vAaC61fdj9FHXv8Gd6g8tfzD7Mn/9cr2D+Mf1V8ErJYHPbeDSlGg56pmzB4Xn9M4YwrQXJVo4Oq7AWLG9gUPl1inR2GxAtBYuq1231AmDUKGDjw/Yi1wCoEyJE5ooYAF6dP+x0JeSc+C3fl+FEIOtRgxk+OYBJAz30/TpNbi7/dX9x6hg3Qe8LgEE6AdR7gSkdsoSlFaF9dHI3IATBr8hoFZky2VQ/fcUuxnlqiU7wkt8VMGX5sLX6ZCcamBMykLtXwnBulbwyXjW4Olmi0Q1NxcnQEY+8iFA/VgT7aRQ2it8qEhhHmNlH3ocfJ6U4c9vd0RCkS90jkYaMoeR9J73jUTy7nmcFzD4y2/NyLeS0RZUUzLzqOz9s/jG8bwUwQiDPEBHTMwseNMbKwQsN+Pj25hrOjNLouVG+YoDwLYCyfwVJg5BuPHEAwa57MR6x6QydlfQlf+7nsck7qJ5l6KsOVofmbpxZ0sx6FAuwZihNnnxoN4N2N41RoBMM0brz2WjZcPbWzx7mTRvjTkSgEMjy9tA8b9xY/O0vBn5S6RcbwCo43QgLX1IZTOI0IaND+Li+xEZLuOgwSKZBHHA45HgKY5OKBuN+urO+TP8mre8xfrFVJqPAdt11jzxZMYUTi0rQZM4FxOm1Hf388LNAaZ0uk3zRyNt47igaIItZLkU6IUBeA9I9d5BI/xxdm1rpLn+kAj1+sjdR6+/gYWfIjBXjcHUpX76Btd8b5bgJrhM/bvn0Oe975Yd0jXB7QDNwZ4YDoKp/ggypGwSUOVbdkvo5Omi40ci83Tg3wxm1r9T+o44bj/juXxXjmlrAKrTf8voYlNjZqZ4oeWK3YxaTgg28bXU/s1rZdV1XLwM2q21qMBKaiCeiR+gD0oOLsKzFUFGkgIj7scVOBqE82kezmOZG75d0Ni6ImpxY7fKAks37ZZfRDfufMuNfjTb+3vE+Sh4L1i9gek+T82i4sDk+gUHpMlOPbihVrbkAJu2sehiK8AvjJ1cm2fpQlv/VQ/1cOQv4mlHEqvqHvyYr6qWXmflhKmNhBoXIgi0kQIPEOoQG8KqrtmFHAK7p8Pspb5h1mecq5TU7q5DMCQQt7/xI7zGAQDG2e3dzI03k/ntVib3FTfhuR/AIvPeLlRxNWXaAtVKJeiAWzeMZyzL/HhjORTHDdUKAOQsLG5ONYGd3m+9sgM0B3kqffkrOuo+yS7r9uDXWYwiC0f8vaFkGUIb96GkCZ632iImup+eVJmwR3TfaogP83WB5OFtBjmpIof9LYZvIiahxxM+62qwG4CQuXCO8DiwidK4QQ7/OlWAfS2tlP+V1ov2R/TqsLv0AZujEl5iJ0T4RNvtr4D2AqaYS9tkifiXhk+TPXVA9Ex+pkiYaoDiANf4U3RU2aiFDlg2fDhOv4hov06VHgdrJ49F3lkw3ty9REYrYWU0FpIcfgI5OrdO1KG5bp+t39Ue4lu6DO2bURgWTQI9TczovzuyIAPgbwetESgCZ9OayP+V5bhIyMt6XZ7kYob1u5hzAGRoQel03sID+FH1UslgJL3KUeCyHjCIs2tUoQDjOkLd/TP8hXHVOuHuotjYtqOogOR5Pj54oLN8ljkZMK8x+URYwBDLKn3HHuGHb2KkbE4GF0F9AqdcBjf0mSyiMkKgvWtR/cZ+HTsgC0vOv7FqQYvkWd/oOvul1A5wQTCdMQSQAMR1oGGN5ocax7R4yzmK161ggTmc4sYaCjKIyUOjSsdUloqB8M/CjEgkpCLRkYgHO4UAmnUB3AWW+yHfigbOlWlxpDJ6MVqNEgBDyk0BPRnjkQtte+9j2TZKlaqAQoYuMIKa88Z9IyB7Au+uWwd7uEw1qdp57zFkQ1oQhRm0wNk8Pm5i6WVKgkYspOtjNq7WHeCzcusRwW62RfV39WkKlhUb7T4iWFS4iiJwxqxM+Cft7/LNNil5li2VhqRFfxbIJC+tH4K2qxggAAA/vOAW/w47YO2ACvqCoHBcVpcGTknI5b05b5DKiHvGzq2Ky9hnLOX36aYvuNTQQ3lgtOLPiVcwb3JX+G7jaRo1+Wz0hyb4x0dqht8Pbw5Z/wPYoCVjr+Ghfs/DY5XPeNJucYAzfMTpWZLaJmYPQbEztsFDXlgPhR7EFqZgGcJvB1g2a1EM8VI5wkJK8h7rHKga2pVG1mOcpyZytFU1sBCJtyXKnDxVpWVDQ6VL70FLe9UAzbxS80lHrhNCFA7Aa7G91rMZJkdZNhbx3NnSAxAvRe4Uq5QcEABGtjNA57dA+ahWJDH7uM/XoxZKjQ+vJwORDJjUFcGkeku9oDMOsHwXt2ZulYkMVIIEi9GDnMLb9LTqSmM5WPOHgRtxdugXcko4/xF879wDQs2HgAADVqnf7RKnZpPNbConFFpgIyFGzz+OCqlGlzjpdXKeRyugLaX7BylhFvokVgbrsGkjE7xmZB1BhuXDXF+0xt4rPJwtQZXUiJ/vQEH5/OXLIxnuM532dCAwJq6UJ5qd/FyMP0o0ilr0kHzuFlyL3FCDRqMSdSG3Of2wakwYfamThwJ/CRXHe0l3LL4B2ghricbzFvQlDojQfgIQyLnQw4R5OV6RYIUT2pxrXCXmZ/rIWo4IhHrQm3/fFNRE56ztrIwiLmc5KTaIwgpF984AAloKppVmJ9mNBIUtzPYu38gD7WEk/Nxpdnk4IIlIj+5qbkSeoVLwQh8kBTyh9qf/NZRFaV73EohBVonDq1PVx2RRrUwAUgis1FL3WMDJPFuYippkvrq249C/DDd17xsXoDJZEkNMcxVGwf0dY01fkHJsv4Or4+QYYkJ2z7NFzf8j5nUCA7gKRmIOlNxVIl9QGkRJ+RnyN3JpZ3YhAEgBNzGA3x6SClY3WWMLBQMyHZ370QYJm75X3sWHhss98i460ApxEcwZVel+BEqZNLgG9M/RZ6XYTsg/zCzak0VxBv04mFOg6Am/nbDwesA9ictxkBSDAVGDVapJ4UkhiqZ1JXqpO2hZdgfziZmhhhkpM1eXMWEypQAcBeEWFRpixDX/UgGotyU3W1ZOGA+6+8ecMNbZcECnSSAGTgMnh1WBDYOtanVe1coCW98vT2Jg1FkPPfqgDtoKiHM064+YL16B5PWEvw/2wDMxYY8XwOG2TSqBYqCC6nqlRJvpV0YH5KgGbeKAAALaHoHWj70A1c59LlMPE/Eanccm66XB4JxdR3m/VsTdjkjwRykf7Q/mHxAQA+ngfSau6E72UgbQd1w+DxWYCvwZt3v2OY2qCTKQzsBBFeh+5mCx1R/De/qoiG70wK8oamIbrhNKVdmlyuXztZ6sDlU3LU8QQDWgg3mQ2hgjN/Fg/WkrUfnCofcfTllJOdqzXxJQNaVaRLAjtBhreFmJZac7TH39Ht6jMAfdSGQr5AARvAoU2ohXFkOrOyl3iQv0FYSjIfukWRasCz97AJEm3eKMfL8ACJXmR4YVb08QYA7Ui5wLSYVEWi3S3Lg2cQ4lPeEHk8uzpIOrk+4ytrMZOZw+xEADO2Cetugo/SiBy2QAVU0y12tqfSh5vY+QD33eHl9QS9Ek+2q5VzJz9Jgk3RceYQgpfPoGZIhDyX36uun0AoaSOlEYcI7ICcs/8+IGtroYVE8uhoxFy4bvrPOUPLvCLhXAI15F92eCBOplfXL8Rwqsb5subqCPEspWxbvGpKimdEWZi5EWYkyT3oLJqN0vgop5cGCDV2wkw2QAMTk97ACaza4CDiQrsjTkAAAwZQNqLKatKSxbfcELHb2niD5EtQHrBVNl+u2++TlP4lODzx1jpUprlOCXB1T/lfjTqz6EuQn0vaOLqqRpKgBlZD75Klf6MelnXO2V+fMYZWwW81yHP3gBbgnNgwb+Q8wP99nTZQpQabb5pjphHJpfhyVFZfxtYVaoHjOAASpympy9z8ggAUBTnhUoVp60R9z6r/rDDkZjBHWJtU+kINv4UbBxm/Ejmpm7XBAaAf+HYkAoqwh+6sjBF/j1EIYFoOa6P/xnCach+mu+lNmXzmOBoO+aNnD7S/E7l0o6OGSFEJzZJFBYklr2V9kJjmLVnXaD5N4HxehMK3RCKmUJKM91N+AAAubEl7RAA5Faom7UAAiE8DUufhDIR5ST8ZHk395pU0bUKSCeudEytIU/gXbvd76qMKimPukdDCYhpQWsY17VP85tRLetBX2BOaZJx/2v2MreP+Fq64Ee2OAAtgAAD/QhiUAMIkJQKDsYlysn4Y07svd+CJvPcNhzHCs45zuyUqsoO7mJZ6Se9sv5unMCHZFHS7mXJTOZgZN82HGjk7SowtgXptv1ldrjfmJUuF/j7oWc8JwQ2RZkJaQFx/CXajRuPfE5dwpil/dT3KFPWS0srU7bvCvjCRmhmTO5qvTcf6xTlqnEovqsDMz1+mrA7RAUabFuwCd9ATfdcR5v9HOt9g0i5UUdeEUSU6DxeCSUNo2od0rIHy8lZxDI0cnGSY1DBAdd+h6CTezoloGu5W8gtfeQmbzs8CAG2vB6shsV8KzXwoZcAvR3PgNcAcccFs9fAIdKERYITCvw+i0xa44NJ5Np5GVXLdth8gEnCQv5tyoZr057M8TP5UuR/JYeWQaI7Nf/LYtHD1Sk8ef4ol8MLRa37uxXfInaMWf6DNEZ4XzUILu9Q5geyLf05QaOtUANyKvcC6duYa44tEZgFR8r0vsb0NPYCL/abMdU8xzgnOXLtt1B4Qmp6pCvtHME8JUEt5AduDGyUZIgOno+NHp8OZ9YW+dIarKz9p/glQ95U6gI6vAf9Vq2OWUtihPIAALdm1ogKFS8ieY0maLr5AgiFZqEmNjcxzqbNffKkr0CsPqs0v8AQBCJwbP9RsOAJDVqc7EEgBtomwmD5ewgZU3W6RnXViyhuKZahSScWOOr/U75cfAgRyasN9hUrzI+hHmCN+BV4fAeU4n7qn2iCwLnk9KJVKRCeB9aASvVeK1JwXmMisnDlflP92q2wDjGbU+t89afaW1B0vqhc+NePR+kE2Cx9WY8HAPPaVciniO0YKG3lXYDDejll0XAbR/Jy1DYDTZ5ac/VKFQLL/JxBY+a/kpe8gxpI91ufJudL70DPNjauj1ZfptFlb7ABgICiLENqwHBXg04IPCfs1yQvoM+t55m9puYbogaeD70WbdiGNe79hjCTOJLR+6+g/oyI5IjcDKk/jBhYgLdOtzXIE5a+aPs1H9CbTKrLCWApXeEKkoWV9JmX0F9IalJegbSmCXf/vQmjirhobo9eZnKXPrh8UawyrOV6nJ5BJtVCJ++zK/wQfTa6ysKuNnCcr1CYNI17xCxsNn20MmCKaleB0N7LQcYzAnR3qC53mwFl5GTsdTUAE056Lk253tBEzdzJZRR9MKmyhqqmUe/jhZ48uFS0GJx5xvIlqkWU4xIZdU9A0EFwo86QJvwdDRH1bwfXJOeHejrrRWKCfkOD/AtT8fL/wTy7bqYwYzyjgKFhPcLrzqltN9k7YvrtkNw2fGK5U38rda3ZBkOi2zItNJHwZgLqnXfbqzl24zeJ6Xa88A6dsFB2i6/F6l4ULzX3xz+PUOO+n2oPUj4PtNn1GaV4Xgk8vxuhHu4rQSwaF7jdQHWXn/LwE3Z77TbQwueaiLeICU1ds+cDujazKqfRsoqVrw90XVs9bML9Mnikw6nctAxVk1T3Vsb5nCVhr48xzk4LfQk32Wd9C/fg289Fz8HW1ae/BC+JvRkxvFRXavZLY0wRXIYWSdd4TShdBpGw1jbh+H4Lp/lab4yyK5gSCXyUdlC/ukUcnyaCUme085ULrjaSu1KLAvduNV9Y9Is/g8FQ9cj5wGE6Nkw1SnlK9lI+UiMfZ+PhwxkP8iSv1DH/w5LonKIis6rK04m86y9Ge3BDuLeJ+Ey+U++db/1U/HFw/lnlGvpMRL04J/mbCOll42h7togQ1cHtDtH6y5ySuVx7SIyB27GnSbOBWisnv3sQxfIFSEAzv54pSuaESzndP3LAe5iPS6Vxx29RabrceOoOCHlqSpw0fTDItkDEiX3NbO+g3DsmTzDjlofCGPT5mzp7a68AAG/gyDB6o4hH53M1HWVr4QZryzP4teTnuu/Xv2R9YF2Ez3R3CfTwNFMGRDpoOND41TaOeNNXbmWdFWbKVPg3tRIhfOeHYkVezuZyXfd8JzT4221YclMUb2s1pn6Am9sMeKu65FEosVylfERypvj/oClqAkPrD9ptcRSAf8cjTL1cnBNog5CnLYf/Qsp8UoIJPfzc4RQoQYIYExgyM8xYmFAZeSRJf+teyazsXa2ImpbWCyNlijnPjn8nrPNND5/4zjNq1RADZXZk+xZzG7dN5gpzK3ix/GcWU1allGrywaOhw1eHFPxE3rpciqjPHoZwUE4Ce/hXetinMkXnONgHudmSb36KiZOuRvL2AEF9ib2ofOYjFdoVAiAQ5i3r9ShbKcO6yW1sI/Yx3lPYbA54kErgN4IqYDIMoVUhPh7t3J9zGFpLf6PLSCEyNBHTOtwbdf4hwjJpzdlgRm7+eq5HyzO0yGk+hLWwm5Kwp3EpfyX3BD1zyOmyow6752kYwd1Br7Z98utwH0Pp4MYqHwlYMxlhmeem3joTmXQtH+DQZeS3+XGC0N8PBMZeApyVJoa+HYQGE4onVZiQ/25meGepZOpKywD3ceggqAhQBtb/raKCexiCRIs/1Jav1QLfXuZDjHqZm8zY21oJXZY8bG4nZgf7TU/IBzMAaChFknC8SDWUx4t0tXVle2xdXVjUXpBddhjx0tzxgGct1Gyuo1vcRypJLIKMMaOm3gp1VfDNyjbKL4QY6x4Jcvi+ZHBuDSqeVN7Jaue8TKHiegHEuf2krTjlFEVWWWordkHU/xzF/TT2qZCNkqFtlozOW4B1N30RuZ7TEFFqtnC6R+pQ8iYiCgXVwGDkOr1dPPYrbtzl85THXy4wbGWynu8qTE9dv3LDtsZ0gY2eYFn41Vv3Jy3fhlqxdPNAJSKckNCJ5jSyXUMI3BrXFd6mVLlWc1sjDAsNF0Z19CubT0ZGMghJtQf52oE1QUoQaHxiMkBndTYqEKzyqBpkiLbVjnHv+Dw9RbOF1fEirB0EW3gCi9IEVbPeoMu5unjdm5pKWSIBLDC8cLaPOKE25ck4i3sOyz4OtYNrNTHkqz0VYq8k+U5Bkwq4eeYj0cEn6RvCImgU324NUVXmTabIuNi/o77DK+KjTPgUVII0SOzX/ICqRlIlaHoqyHFeJiRHVgQ3n56WHf2/Pa2KBj5GcUoX1iMc/gccrPSUtCbnjfpLA6Ay0usSyneOBIUOvCPgb20oBfeluLlH2WnbmmITgsXq3udEVopCnuqLyLMjh1Wr+iN+q4+cgOxMonHjLXz+oN6EHZrGnkTpf+71KEG7i1AOZ230UyrFfbDBR3qMr7r+9DK+TqQBw9Fy7GDox3ezcoND8ofMZUed+gk276TTlo4EO1Pl3n9IdEgR2Oz0hHctkUZbRH33Jr7bDboFCQbExr96IusVwF5Tu0RFqiEU8iMhVxUdZ7FPP/3IE61X1tBkumhLOWtFPIDnA12RBdBV68ltqh4R47HcrGNYRBhpmlCVKK3tMJ4Ex6XOfVpZrAG/tCs1Uw6hwrCrvmN/ImMvPAr8ce3aAOav22y4Vq1bmSr/CaVCLD1+CmU7a80rtvlbS6ewGbPRdeUE3cEiPCzCJcaEInYWwnRK67vNWHKOSktTW6jChtvL+PazR/2R1ZtvzIZVWHRyeLTCY+5pn4koEoE8ofJYxClXQuI3+buSE7TpBBQGqzft0nGs1luOoC7oeMBKlHCu08PwB/sW1D0f2AMEQB8jG/KsxZuyCepXVm6k5VpII4zIkpnoJfXlXYo/e3a91ajdpq7rvhJWwEOOPZNjEC5M2V2rhwLWZ4VICsXRasM2B5z7XLKZJzwmWMwVop8Ngk7fdvXYTepCJxzqZUtH0KXcc3KqVbDlturjMNPUYxaRs236LPkmgiDKcxbNI++0zTr2C/VLKHQpP22L2xPAFMfF4Nf249z9H9bl0psirUHV4bdYry/Reuh8eaabz/yxswfEcBLEvuLOFhIfKY1GG7YLcq91sKi+mKc+3cHAUE1R8HpmkCV14BI5hz17jve/ObwRxT8FIWhAcxxr53DKHEr4XK5zxEEiUkvGjUPCEuoKI5e8gxDHWmtONW8EiqvJCCmHaM8braOoZ1ihEX7LXYyvBwZKwDIhEw1gB5eH2qfja3niFLix9U05JscEh0ole/ox3PGD+JSNCIF+W6F6zPBZa4mo4u2SUP275CUiFm/7TBYJ1tOixnK0P4rV2pnnDDX2mtx3f4uJfQo4DyeobkAARAtpr9se6gjH+1cUbapvLVKd2cYqFX/YopJLxfiHhcxzoXpBvMvc2v+Lanrzpk0wD053f+jVybNeKFoWH8y84LYOZPAfanA01wszMxLMcfYC5QGFXB7kPRaQAjaRmc6gxEEv+aQgV/mKF9pbGDBZaxRJp8vyxkmzWhZEB1cvHSnOX2QCX19C2hrxpmH+eULrimjOUBv6nb7c4x3wtwREnMnfIUqsK4VpQjkkUCpq5sy4DSAQVBF9CWTDw+BSyPD1ZoGT/f3qoH7O+Pet46NBo1FM0hXbuxCfPbjGuZHAB4x0GtZB9YCX3SxItYIZkeLg86d9lpFNU2/aMSpDqxOi46voWA4VsGRBjWNZQz1t2n9wRv4KLCcSwg5Xnhkiy4BCNCZ8LpXksiC6b87QTCuKNJLTQTAnKa/+TNA9csWUGqcvu4S474fmkYR55w1c26ar+RU1ICV3R4FdEOBFk1/kN1cCfSA+Ci5yl2XxD3Zf8kGKSV0GTm2wOXvKHTRvBjjgGyd50NZsdlrfJOGQHSDtB6/qfxBCH6pRuecpgVKOWnYf6yi/6EgycYMEBONHYNecFSuDOTH6El+Hym6mUggbn/4wwUO8z5Rl7jcsa+DizcFDgTdRMiHMP0FJJ/XarO+LnUuyhQOWhMxvoI5qeLOp0zUi8nC4u4IbOLmhZkC2JBUp1Nv32UJ1gEpewzZB9WSZ8VfmwZLswpQ8XyUj0ua1VN5Lyp4IlKZSWM2tn3aVGTLlM4InG65SMw0nRpAHwHu4M69LOnzrAibsACvXD9CZRhAWpxky/6iyEn7gkZtzJhjveiYDqvp02WFwojWfhYHSDsxYi1UzSnUkHMDiVA8f2NtxcbdMbWhPe2n2e3K+irOt3Ww8J97WKWSphJc3i2ZIfmOJtkpuoZQf2aoej+Q21hOT7ien1JnuHEu8iaTEkqaoOqTR7D4QHBod2aicnpXwHCouMRtvIfNXUiDmE1zPEeqQpk3lORtR2Awpd16BifqZ6bzzxuJE+cUMapT5Xrd3r96bL13a1olD5LDqBGX/p+ZA6iwOI2uAw/fo2yPJwZlpb5cgUeUk6jzbP9nFo5orQfaaksc5Z1TaE4xeljXXqOR26+16BRoCoIC66XY9QDqw9AgSWH2lZlt62rzWunMsN0D9LJAV4Y3l3Ok7mANMXSVbdGhjT0ar4Zqwm0ZTzlyY7oOL81R+Z4YDbeYbrwTfYi/QbMSzivNFtkAN9OUOue8hBCOEF+6bGq2oOJnuxAjPuaqIpg0dSyAWDFC0kmBkmn8oEu5fKkx4vXAmG6juHNhcRa7SI4RgAUFY9NZKUh6bYOh8hBLDSjkP8SVh/ZB9ZugJ+lAK4pE1jrXNLTMyONNL0/+g8n1we7zBq8lFKakK96IgYd5afI9X6OyTS94GCYWHjZpUL5W1jC1moN6933qYLbS9cFXPZJYZT3jrO1kg/TWy5+TcLc3st60dRUH6qE7b/IAgeylOD4M0M458nYOlXS4dhH/eR+IV7L3Gw7e0FTz5UmX59RwgNCnlZ1/NINLeVFHofDGN7A5HCN9H1p5jsJPZw0muL/dYKKnGCFVC2iAA41ZZDJpas6/K10asdx6hioI+LnbyJX5rmijqP/nJGPzWJVAhxBLNf08oZVW054vzaLm3pHkX89RD9UDJZ17l7icizwzJa31s0ev9iUsIr+3ZPkx5BMszIj3R4+WacV5unIBH1K2GQz8zUtBRoKySbu/fFjJBKn9UcJHhp9DuRw32TS3uEZs3IHLGgT551gDOmrpwZVLYhc+ZPIndQXjT6W1slAbbkMZ93/EZQ9EVplWxNuxdhBWOS9NnxnB3l0vnJTjwGAa4y5NnHxkJypY8zLEZYeDsRs6kh/MfJjkmt5tPMRITC6AxZ6C0mBB9gVHRnIhNWCCAcX4yJ2Hvh0cgPeRvD5yjpSyvFRHCTafxN09naUoBsPtyJGyw0q1oMZOEiHtT17yvyEYnEDd+XlejW6O1gDjHjRCtZpTJo/ubxD3Yaou6gYQZ0Z7G9GRkyQlkjKDiK0i7EFa4p3Rgb5RPBc9l43uXoP5YZorkl6hUZBoXz/eZkTwiM93sb2Oa9RbTyeUdSR+wfeyJOL9ESTvLhF10dRQKVK8gjPua7hP5So+nD3gs4hCPnN5kozDdtzCqnK/BjbWQpCA+cjaMO996a3ol5/SbHYi2MqUbMVdV+LUIRDsglzRKukI4pZuA+RZwEGbYAOhcj5aZqVggGxIPDL+9mAh5oMKgXqZOwn8tqgV9yaPsD/dgY+JOKHz6NlrMe8TZBQAmiZ/Zoire/0leAFHVRDQHNnmYaFGgze82I8Bf+mU63O6xj7I/9JdpSYx/pfJqoOMLTjVJAHJRHT9RJIH7TO8IgpliCHXAyQXXa0+UPEekX8jhdnLQJKXklFnncl+PD2ABOZk0Ky+jw+LB4trZxdRbrwW4ylkYtTz0QbPr74zNvao/AO300RaLUVKVoDj7f+o7NcRHZYz8LefMHnaN9aZGNAWJyG3/N4xa7ZA8EbbHy5aUOrE7S1kIvTKfLXZRZXeE0i3s9S6IRmgJbFAYfTrXHK4qSDETGy4vpFhiRJSKjyuZh5IMQbG/cGaaWirSFN4OVCOZ49tfzjFRRVHkqnhfEn1nQaAh/8vWdjlXkw2G3MGe0hSqyBXHaUhS/sgwF8whWAwMMj9vuCtQvgVIDFELREJ55gbZYVVALnjpyU8tocXZndiFxb8Aaa2kPcfGafpgCNvwxLroB8fd/uD04LjLAl7BYdMFMOmG/NYO0O0I7t6ZpNEhpPYGjjPF391lhMSSWq3ZscDplAxvxGlDmTN0tpZUniCiYKH5L7xBHh5T+OKnRoQQpZr+hvdEfFBGxTrhHLxaJcPUeFWIDMuLZLYKtsniCFXJeZfxIQEUAxFKT/WdXhQzAioFILq2B9qsHU2KIXk4tDhNDfVY33Eo8hBuMpC7MtCl1hKdXTKgtwODsI2lDoBkJUrSjZ5z70w3YQUgrmhde03dR8l2Nd2X5VkCCyog+lQ+KSmmBw69U4mk3lgbtvV4eLEi0ovBdIu3MJSCwfARwzXLO1e1Fz18E1MfRDni5rMl+l3AHygxRL4VrIOjOZgLv7rxEkO7FM0vvOGXfmBkBGQFI7sc7Q4AS/XINlVi0IaxMfnNOfyXTcbIEYoSKFPLi5echTInkXxuKF4YiLmPqz/obdOfpLN7sD+1gggOu/uVkquI+z0ZiggkpBio0nIf61YOu+ZqvpZMqAwR0XxxJl3SZFtEU6X8+mWBfHRPtnLLbapE9ElpNwiCCDm9rSEY+doalfsdisze55WBaIgWV5HNfxh/qQfS43UFLhs42XOTFZZE8tMj7/xjZ6TXTO9LvRsxIHSOnR8m6EKh2sZucIYk00a3alV34Dn2r+E8KZfQbneESCJRvcYQbLVS6aPytC4obbzTNWModRIDx9Np5wub63pgvLRgAFUR2kOhNUsw9qd+/Mq3udvNCF8sfhxGqJlYx7jomRo4+5omUdXUGn/oEDlCHB7zZRaA7ohKHbW9h9D+4phsbFwDhc2TpV6aGzLySn6w1CMkJBZoUlZqo/4BCHqfyXuaZXKUcNJwWJiqcl+lrbMfHDocRuJx+d8mKKmDciAL6FbWYvvxz0GoaDtwwamPF8djiRQ0kQWnTTjKp0QARDAiPofZaYEBM55XLipq1yGCgivo95rYzHOT7SFR7rQWzxdm60U2acSsCPsJS+0YVyL5GN8z+/x1T+wDF6O9Sk7q8j3I9LlhespdVWzaUZZO5KJl1We0CerxB9/aglDHw8XYhlhXh00wPNfO9TZgqAt5pD1X+R67qPz0PelyXTTlRzhzzuzL7kCj/evjM+BO1QNLRjpzOf0RJxf26bxK7LmJeudGU8bIcGNBhZVgHdkNgtUywk8cvwZcI340n2NOzPhSeKHN1g3q/0uvxG56jBA9mZxhy+npL5FtOMtIucR7LUBfd+CiGCHRoCNvd/lWmdSim/gHjZgezM7v9NM2AJ2rSEpB3/brI8YvJ1rLBuuEqYh8cbE+aMsIBoKB0oJJKOBZegM9tDRTJHDI6HuZWyRT9U6QgO1IOk+ISc4cvZzp6j4ES8kjbcuZUXR7q4szopOpzVZ+eE/55ygc1zA2Bk3fxjbN2nF9SNqKgN2yFFLK7pqK4SEPpZU/XY2ZNJ6nmjs5f2Vk3ngeUsZeoRRDYLPhPttAiH84J0MOUAuHdq5DSoFTFDXE849SmPL6mJ6ME+bpUepl/J3iPE0yopPa0soakeI0x6usdl4hAlTOMmfnpzT8jFQyoIJnLgNY19fdFl3Mt/p6ma0rbUUVigK0YMtI88SMyouOuZvZGM2llVgdacZw5iABhq12VNkEkJeQASS0UG4YMXYE4bWQMDfbzyXSnsyeR6lyPPt2gLkYOD/X/pRNKGzNMUQkIAuyHl9nasup9aI7bUa70zcZ5wz1hwELufdPT+wrVhrSaoOFMIYq3MZic2NjovIQByEfc4ai83oeY8dAO/WGv/eXk8EJFKduf1nB3GJX9ttENiItObX/9bYIfXIJcA+qJTrRPwCTZOGHBto3+9QkgvpiyQV6K+5h46p0JfzLxCl6EnoXmNSi7Dn3XAoqaGQFhTLKD3V+mfwJTfAomWZ6h8rG+mVL0vMzpUDk1gamO2lPU6NxhHNuLbN40A57rhYPI7gajq2YoohKrb7ILho2+P6mNSZmwcsz1pXMxydDNPvdsotnS/hgmORrjjFmFAKDhU8ZChrsuqTnuBFFSx2Kk6JhUi3WDFRu911EGrVuWTjeShXVogjnt8gbvfhkC8LxRmlX+zJBlJzuGKZep5yBfDh01+Jw7j2zEAAA==) center/cover no-repeat}
+  canvas{position:absolute;inset:0;width:100%;height:100%;display:block;will-change:transform}
+  .vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(5,6,10,.75) 100%)}
+
+  /* text layers */
+  .layer{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(24px,8vw,120px);opacity:0;will-change:opacity,transform;pointer-events:none}
+  .layer.center{align-items:center;text-align:center}
+  .layer.right{align-items:flex-end;text-align:right}
+  .layer.hero{justify-content:flex-end;align-items:flex-start;text-align:left;padding-bottom:16vh}
+  .layer.hero h1{font-size:clamp(30px,5.4vw,76px)}
+  .eyebrow{font-family:var(--font-en);font-size:12px;letter-spacing:.4em;color:var(--accent);margin-bottom:20px}
+  h1,h2{font-weight:600;line-height:1.25;letter-spacing:.06em;text-shadow:0 2px 30px rgba(0,0,0,.8)}
+  h1{font-size:clamp(34px,7vw,96px)}
+  h2{font-size:clamp(26px,4.4vw,60px)}
+  p.lead{margin-top:22px;max-width:30em;font-size:clamp(14px,1.5vw,18px);line-height:2;color:#d3d9e6;text-shadow:0 1px 18px rgba(0,0,0,.9)}
+  .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:var(--font-en);font-size:11px;letter-spacing:.35em;color:var(--muted);text-align:center}
+  .scroll-hint::after{content:"";display:block;width:1px;height:48px;margin:12px auto 0;background:linear-gradient(var(--accent),transparent);animation:drop 1.8s infinite}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  .progress{position:absolute;right:clamp(16px,3vw,40px);top:50%;transform:translateY(-50%);width:1px;height:120px;background:#2a3246}
+  .progress i{position:absolute;left:0;top:0;width:100%;height:0;background:var(--accent)}
+
+  /* after stage */
+  section.after{position:relative;z-index:2;background:var(--bg);padding:140px clamp(24px,8vw,120px)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-top:56px}
+  .card{border:1px solid #1d2435;padding:32px 28px;background:linear-gradient(160deg,#0b0f1a,#07080d)}
+  .card b{font-family:var(--font-en);letter-spacing:.3em;font-size:11px;color:var(--accent)}
+  .card h3{margin:14px 0 10px;font-size:20px;letter-spacing:.06em}
+  .card p{color:var(--muted);line-height:1.9;font-size:14px}
+  .cta{text-align:center;padding:160px 24px 120px}
+  .btn{display:inline-block;margin-top:36px;padding:18px 48px;border:1px solid var(--accent);color:var(--accent);text-decoration:none;font-family:var(--font-en);letter-spacing:.3em;font-size:13px;transition:.3s}
+  .btn:hover{background:var(--accent);color:#05060a}
+  .about{max-width:860px}
+  .about p{color:#c4cbdb;line-height:2;margin-top:18px;font-size:15px}
+  .faq{margin-top:48px;max-width:860px}
+  .faq details{border-top:1px solid #1d2435;padding:20px 0}
+  .faq details:last-child{border-bottom:1px solid #1d2435}
+  .faq summary{cursor:pointer;font-size:17px;letter-spacing:.04em;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::before{content:"Q.";font-family:var(--font-en);color:var(--accent);margin-right:12px}
+  .faq p{margin:14px 0 0 30px;color:#aab3c6;line-height:1.95;font-size:14px}
+  footer{padding:40px;text-align:center;font-family:var(--font-en);font-size:11px;letter-spacing:.25em;color:#566078}
+
+  @media (max-width:768px){
+    #stage{height:600vh}
+    #sticky{height:100vh;height:100svh}
+    header{padding:16px 20px;font-size:11px}
+    .layer{padding:0 22px}
+    .layer.hero{padding-bottom:18svh}
+    .layer.hero h1{font-size:clamp(34px,11vw,52px)}
+    h2{font-size:clamp(24px,7.4vw,34px)}
+    p.lead{font-size:14px;line-height:1.9;max-width:none}
+    .layer.right{align-items:flex-start;text-align:left}
+    .layer:not(.hero){justify-content:flex-end;padding-bottom:14svh}
+    .layer.center{align-items:flex-start;text-align:left}
+    .progress{display:none}
+    .vignette::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(transparent,rgba(5,6,10,.88))}
+    .vignette{background:radial-gradient(ellipse at 50% 35%,transparent 25%,rgba(5,6,10,.85) 100%)}
+    section.after{padding:90px 22px}
+    .cta{padding:100px 22px 80px}
+    .btn{padding:16px 36px}
+  }
+  @media (prefers-reduced-motion:reduce){.scroll-hint::after{animation:none}}
+</style>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://2026webai-lab.github.io/MAKE-A-WISH/#website",
+   "url": "https://2026webai-lab.github.io/MAKE-A-WISH/",
+   "name": "MAKE A WISH",
+   "inLanguage": "ja",
+   "publisher": {
+    "@id": "https://2026webai-lab.github.io/newportfolio/#person"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://2026webai-lab.github.io/MAKE-A-WISH/#webpage",
+   "url": "https://2026webai-lab.github.io/MAKE-A-WISH/",
+   "name": "MAKE A WISH — 流れ星が消える前に、願いを形にする｜HP・EC制作／SNS運用／AI業務効率化",
+   "description": "HATTORI ICHIDAI（服部一大）の、願いを形にするWeb制作。HP・EC制作、Instagram運用・Webマーケティング、AIによる業務効率化、サイトのリニューアルまで。場所を選ばず、リモートで対応します。",
+   "inLanguage": "ja",
+   "isPartOf": {
+    "@id": "https://2026webai-lab.github.io/MAKE-A-WISH/#website"
+   },
+   "author": {
+    "@id": "https://2026webai-lab.github.io/newportfolio/#person"
+   },
+   "dateModified": "2026-10-19",
+   "datePublished": "2026-10-19",
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://2026webai-lab.github.io/MAKE-A-WISH/public/og.jpg"
+   }
+  },
+  {
+   "@type": "CreativeWork",
+   "name": "MAKE A WISH",
+   "creator": {
+    "@id": "https://2026webai-lab.github.io/newportfolio/#person"
+   },
+   "url": "https://2026webai-lab.github.io/MAKE-A-WISH/",
+   "copyrightHolder": {
+    "@id": "https://2026webai-lab.github.io/newportfolio/#person"
+   },
+   "copyrightYear": 2026,
+   "inLanguage": "ja",
+   "image": "https://2026webai-lab.github.io/MAKE-A-WISH/public/og.jpg"
+  },
+  {
+   "@type": "Service",
+   "@id": "https://2026webai-lab.github.io/MAKE-A-WISH/#service-1",
+   "name": "HP・ECサイト制作",
+   "description": "ホームページ・LP・ECサイトを、やりたいことに合わせて制作します。公開後の更新・保守にも対応します。",
+   "provider": {
+    "@id": "https://2026webai-lab.github.io/newportfolio/#person"
+   },
+   "serviceType": "HP・ECサイト制作",
+   "areaServed": "JP"
+  },
+  {
+   "@type": "Service",
+   "@id": "https://2026webai-lab.github.io/MAKE-A-WISH/#service-2",
+   "name": "SNS運用・Webマーケティング",
+   "description": "Instagram1万人運用の経験と、SEO・アクセス解析の知識で、見つけてもらう仕組みを作ります。",
+   "provider": {
+    "@id": "https://2026webai-lab.github.io/newportfolio/#person"
+   },
+   "serviceType": "SNS運用・Webマーケティング",
+   "areaServed": "JP"
+  },
+  {
+   "@type": "Service",
+   "@id": "https://2026webai-lab.github.io/MAKE-A-WISH/#service-3",
+   "name": "AIによる業務効率化",
+   "description": "調査・集計・報告などの繰り返し作業をAIと自動化で効率化。人の確認は残します。",
+   "provider": {
+    "@id": "https://2026webai-lab.github.io/newportfolio/#person"
+   },
+   "serviceType": "AIによる業務効率化",
+   "areaServed": "JP"
+  },
+  {
+   "@type": "Service",
+   "@id": "https://2026webai-lab.github.io/MAKE-A-WISH/#service-4",
+   "name": "サイトのリニューアル",
+   "description": "古くなったサイトを、見やすく・更新しやすく作り直します。現状の診断からご相談ください。",
+   "provider": {
+    "@id": "https://2026webai-lab.github.io/newportfolio/#person"
+   },
+   "serviceType": "サイトのリニューアル",
+   "areaServed": "JP"
+  },
+  {
+   "@type": "Person",
+   "@id": "https://2026webai-lab.github.io/newportfolio/#person",
+   "name": "HATTORI ICHIDAI",
+   "alternateName": [
+    "服部一大",
+    "HATTORI"
+   ],
+   "jobTitle": "Webマーケター／デジタルクリエイター",
+   "url": "https://2026webai-lab.github.io/newportfolio/",
+   "sameAs": [
+    "https://2026webai-lab.github.io/newportfolio/"
+   ],
+   "knowsAbout": [
+    "ホームページ制作",
+    "LP制作",
+    "ECサイト構築",
+    "サイトリニューアル",
+    "Instagram運用",
+    "Webマーケティング",
+    "SEO",
+    "AI活用",
+    "業務効率化",
+    "リモート対応"
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "HATTORI ICHIDAI（服部一大）は何を提供していますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "HP・LP・ECサイトの制作、Instagram運用とWebマーケティング、AIによる業務効率化、サイトのリニューアルのご相談に対応するWebマーケター／デジタルクリエイターです。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "遠方でも依頼できますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "はい。打ち合わせから納品まで、リモートで対応します。連絡方法や時間帯は、ご相談時に決めます。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "まだ作りたいものが決まっていなくても相談できますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "はい。ぼんやりした「こうしたい」からで大丈夫です。近い形をご提案します。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "今のサイトを作り直したい場合は？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "現状を確認したうえで、見やすさ・更新のしやすさ・スマホ表示を整えるリニューアルをご提案します。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "個人や個人事業主でも依頼できますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "はい。個人、個人事業主、企業のどなたでもご相談いただけます。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "相談はどこからできますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "ポートフォリオサイトの問い合わせから受け付けています。"
+     }
+    }
+   ]
+  }
+ ]
+}</script>
+</head>
+<body id="top">
+
+<div id="loader"><div class="box">LOADING<div class="bar"><i id="bar"></i></div><div id="pct" style="margin-top:12px">0%</div></div></div>
+
+<header><a href="#top">MAKE A WISH</a><a href="https://2026webai-lab.github.io/newportfolio/" target="_blank" rel="noopener">CONTACT</a></header>
+
+<div id="stage">
+  <div id="sticky">
+    <canvas id="c" style="display:none"></canvas>
+    <canvas id="gl" style="opacity:0"></canvas>
+    <div class="vignette"></div>
+
+    <div class="layer hero" data-in="0" data-out="0.14">
+      <div class="eyebrow">MAKE A WISH</div>
+      <h1>流れ星が消える前に、<br>願いを形にする。</h1>
+      <p class="lead">スクロールすると、夜空の下の丘へ。</p>
+      <div class="scroll-hint">SCROLL</div>
+    </div>
+    <div class="layer" data-in="0.2" data-out="0.38">
+      <div class="eyebrow">01 — WISH</div>
+      <h2>作りたいものは、<br>まだ言葉にならなくていい。</h2>
+      <p class="lead">ぼんやりした「こうしたい」から聞かせてください。一緒に、形にしていきます。</p>
+    </div>
+    <div class="layer" data-in="0.45" data-out="0.63">
+      <div class="eyebrow">02 — MOVE</div>
+      <h2>場所を選ばず、<br>夜でも動く。</h2>
+      <p class="lead">打ち合わせから納品まで、リモートで対応します。</p>
+    </div>
+    <div class="layer" data-in="0.7" data-out="0.88">
+      <div class="eyebrow">03 — FORM</div>
+      <h2>願いを、<br>Webの形に。</h2>
+      
+    </div>
+    <div class="layer" data-in="0.92" data-out="1.2">
+      <div class="eyebrow">NEXT</div>
+      <h2>さあ、願いを聞かせてください。</h2>
+      
+    </div>
+
+    <div class="progress"><i id="prog"></i></div>
+  </div>
+</div>
+
+<section class="after" id="features">
+  <div class="eyebrow" style="font-family:var(--font-en);letter-spacing:.4em;font-size:12px;color:var(--accent)">FEATURES</div>
+  <h2>進め方</h2>
+  <div class="grid">
+    <div class="card"><b>01</b><h3>聞く</h3><p>やりたいこと、困っていることを聞かせてください。</p></div>
+    <div class="card"><b>02</b><h3>形にする</h3><p>いちばん近い形を提案し、最短で試作します。</p></div>
+    <div class="card"><b>03</b><h3>育てる</h3><p>公開後の更新・運用・改善まで続けて対応します。</p></div>
+  </div>
+</section>
+
+<section class="after" id="services">
+  <div class="eyebrow" style="font-family:var(--font-en);letter-spacing:.4em;font-size:12px;color:var(--accent)">SERVICE</div>
+  <h2>提供内容</h2>
+  <div class="grid">
+    <div class="card"><b>01</b><h3>HP・ECサイト制作</h3><p>ホームページ・LP・ECサイトを、やりたいことに合わせて制作します。公開後の更新・保守にも対応します。</p></div>
+    <div class="card"><b>02</b><h3>SNS運用・Webマーケティング</h3><p>Instagram1万人運用の経験と、SEO・アクセス解析の知識で、見つけてもらう仕組みを作ります。</p></div>
+    <div class="card"><b>03</b><h3>AIによる業務効率化</h3><p>調査・集計・報告などの繰り返し作業をAIと自動化で効率化。人の確認は残します。</p></div>
+    <div class="card"><b>04</b><h3>サイトのリニューアル</h3><p>古くなったサイトを、見やすく・更新しやすく作り直します。現状の診断からご相談ください。</p></div>
+  </div>
+</section>
+
+<section class="after" id="about">
+  <div class="eyebrow" style="font-family:var(--font-en);letter-spacing:.4em;font-size:12px;color:var(--accent)">ABOUT</div>
+  <div class="about">
+    <h2>このページについて</h2>
+    <p>「MAKE A WISH」は、Webマーケター／デジタルクリエイターの<strong>HATTORI ICHIDAI（服部一大）</strong>の仕事への向き合い方を、スクロールで体験できるページにしたものです。映像は自作です。</p><p>個人・個人事業主・企業の「こんなものが作りたい」を聞き、HP・EC・SNS運用・AI活用・リニューアルまで形にします。ご相談はポートフォリオサイトの問い合わせからどうぞ。</p>
+  </div>
+  <div class="faq">
+    <h2 style="font-size:clamp(22px,3vw,34px)">よくある質問</h2>
+    <div style="margin-top:28px">
+      <details><summary>HATTORI ICHIDAI（服部一大）は何を提供していますか？</summary><p>HP・LP・ECサイトの制作、Instagram運用とWebマーケティング、AIによる業務効率化、サイトのリニューアルのご相談に対応するWebマーケター／デジタルクリエイターです。</p></details>
+      <details><summary>遠方でも依頼できますか？</summary><p>はい。打ち合わせから納品まで、リモートで対応します。連絡方法や時間帯は、ご相談時に決めます。</p></details>
+      <details><summary>まだ作りたいものが決まっていなくても相談できますか？</summary><p>はい。ぼんやりした「こうしたい」からで大丈夫です。近い形をご提案します。</p></details>
+      <details><summary>今のサイトを作り直したい場合は？</summary><p>現状を確認したうえで、見やすさ・更新のしやすさ・スマホ表示を整えるリニューアルをご提案します。</p></details>
+      <details><summary>個人や個人事業主でも依頼できますか？</summary><p>はい。個人、個人事業主、企業のどなたでもご相談いただけます。</p></details>
+      <details><summary>相談はどこからできますか？</summary><p>ポートフォリオサイトの問い合わせから受け付けています。</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>願いを、聞かせてください。</h2>
+  <p class="lead" style="margin:22px auto 0">ご相談・お問い合わせはこちらから。</p>
+  <a class="btn" href="https://2026webai-lab.github.io/newportfolio/" target="_blank" rel="noopener">CONTACT</a>
+</section>
+
+<footer>MAKE A WISH © 2026 HATTORI ICHIDAI<br><span style="letter-spacing:.1em">映像：自作 ／ 企画・構成：HATTORI ICHIDAI</span></footer>
+
+<script>
+(() => {
+(() => {
+  const CFG = {"frames": 88, "zoom": 0.12, "fx": {"wings": false, "robe": false, "sway": 1, "rays": false, "particles": 90, "shards": 0, "stars": 3, "leaves": 30, "glow": [0.57, 0.64], "grass": 0.72, "rayColor": ".62,.78,1.", "particleColor": ".8,.9,1."}};
+  const TOTAL = CFG.frames;                           // frame_001〜NNN.webp
+  const BASES = ['public/frames/', 'frames/', ''];   // アップロード場所が違っても見つける
+  let base = null;
+  const src = i => `${base}frame_${String(i).padStart(3,'0')}.webp`;
+
+  const c2d = document.getElementById('c');
+  const cgl = document.getElementById('gl');
+  const ctx = c2d.getContext('2d');
+  const stage = document.getElementById('stage');
+  const layers = [...document.querySelectorAll('.layer')];
+  const prog = document.getElementById('prog');
+  const bar = document.getElementById('bar'), pct = document.getElementById('pct');
+  const loader = document.getElementById('loader');
+  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const isMobile = matchMedia('(max-width:768px)').matches;
+
+  const imgs = new Array(TOTAL);
+  let loaded = 0, current = 0, lastDrawn = -1, mode = 'gl', ar = 16 / 9;
+
+  const nearest = i => {
+    for (let d = 0; d < TOTAL; d++) {
+      for (const k of [i - d, i + d]) if (k >= 0 && k < TOTAL && imgs[k] && imgs[k].ok) return k;
+    }
+    return -1;
+  };
+
+  /* ---------- WebGL（光の筋・粒子・布と羽の揺れ） ---------- */
+  let gl = null, prog4, prog5, tbuf, tcount = 0, lbuf, lcount = 0, prog1, prog2, prog3, sbuf, scount, slots, uni = {}, pbuf, pcount;
+  const VS = `attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}`;
+  const FS = `precision highp float;
+uniform sampler2D A,B;uniform float mv,t,fx,ar;uniform vec2 res;varying vec2 v;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+ return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+void main(){
+  float sa=res.x/res.y;vec2 uv=v;
+  if(sa>ar){uv.y=(v.y-.5)*(ar/sa)+.5;}else{uv.x=(v.x-.5)*(sa/ar)+.5;}
+  vec2 q=vec2(uv.x,1.-uv.y);                 // q.y: 上=0
+  float side=abs(q.x-.5);
+  // 羽：左右の外側ほど大きく波打つ
+  float wing=${CFG.fx.wings?1:0}.*smoothstep(.10,.42,side)*(1.-smoothstep(.45,.78,q.y));
+  float w1=sin(t*1.3+side*9.+q.y*5.)*.5+(n(vec2(side*4.+t*.35,q.y*4.))-.5);
+  vec2 d=vec2((n(vec2(q.y*5.,t*.4))-.5)*sign(q.x-.5)*.006,w1*.010)*wing*fx*${CFG.fx.sway||1}.;
+  // 布：下ほど大きく横に揺れる
+  float robe=${CFG.fx.robe?1:0}.*(1.-smoothstep(.08,.22,side))*smoothstep(.45,.85,q.y);
+  d.x+=(sin(t*1.1+q.y*10.)*(q.y-.4)*.010+(n(vec2(q.y*6.,t*.5))-.5)*.007)*robe*fx;
+  float gm=${CFG.fx.grass?1:0}.*smoothstep(${(CFG.fx.grass||.7).toFixed(3)},.98,q.y)*max(smoothstep(.10,.2,abs(q.x-.57)),smoothstep(.86,.92,q.y));
+  d.x+=gm*(sin(t*1.3+q.x*16.+q.y*6.)*.0035+(n(vec2(q.x*9.,t*.5))-.5)*.004)*fx;
+  vec2 su=clamp(uv+vec2(d.x,-d.y),0.,1.);
+  vec3 col=mix(texture2D(A,su).rgb,texture2D(B,su).rgb,mv);
+  // 差し込む光：上中央から放射する筋がゆっくり揺れる
+  vec2 r=q-vec2(.5,-.15);float ang=atan(r.x,r.y),dist=length(r);
+  float st=n(vec2(ang*14.+t*.25,t*.1))*.65+n(vec2(ang*33.-t*.18,1.7))*.35;
+  st=smoothstep(.35,.95,st);
+  float fall=exp(-dist*1.9);
+  float pulse=.75+.25*sin(t*.7)+.1*sin(t*1.9);
+  col+=vec3(${CFG.fx.rayColor})*st*fall*.38*pulse*fx*${CFG.fx.rays?1:0}.;
+  col+=vec3(.5,.65,.9)*${CFG.fx.rays?1:0}.*exp(-length((q-vec2(.5,.02))*vec2(1.6,2.5)))*.12*pulse*fx;
+  col+=vec3(1.,.72,.3)*${CFG.fx.glow?1:0}.*exp(-length((q-vec2(${(CFG.fx.glow||[.5,.5])[0].toFixed(3)},${(CFG.fx.glow||[.5,.5])[1].toFixed(3)}))*vec2(1.3,2.4))*7.)*.16*(.55+.45*sin(t*.9))*fx;
+  gl_FragColor=vec4(col,1.);
+}`;
+  const PVS = `attribute vec4 s;uniform float t,dpr,hh;varying float a;
+void main(){
+  float x=(s.x-.5)*1.9, y=(s.y-.5)*1.9;
+  gl_Position=vec4(x,y,0.,1.);
+  gl_PointSize=(2.+s.z*s.z*7.)*dpr*(hh/800.);
+  float ph=s.w*40.;
+  a=pow(.5+.5*sin(t*(.35+s.z*.55)+ph),2.)*(.35+.9*s.z);
+}`;
+  const PFS = `precision mediump float;varying float a;
+void main(){float d=length(gl_PointCoord-.5);float k=smoothstep(.5,0.,d);
+ gl_FragColor=vec4(vec3(${CFG.fx.particleColor})*k*k*1.4,k*k*a);}`;
+
+  const SVS = `attribute vec4 s;uniform float t,dpr,hh,asp,amt;varying float a;varying float rot;
+void main(){
+  float life=fract(t*(.07+s.z*.08)+s.w);
+  float ang=s.x*6.2831853;
+  float d=life*(.22+s.y*1.5);
+  vec2 pos=vec2(0.,.12)+vec2(cos(ang)/asp,sin(ang))*d;
+  gl_Position=vec4(pos,0.,1.);
+  gl_PointSize=(7.+s.y*s.y*34.)*dpr*(hh/800.)*(.45+life*.9);
+  a=smoothstep(0.,.05,life)*(1.-smoothstep(.72,1.,life))*amt;
+  rot=ang*2.+t*(.8+s.z*3.)*(s.y>.5?1.:-1.)+s.w*6.;
+}`;
+  const SFS = `precision mediump float;varying float a;varying float rot;
+void main(){
+  vec2 q=gl_PointCoord-.5;float c=cos(rot),sn=sin(rot);q=vec2(c*q.x-sn*q.y,sn*q.x+c*q.y);
+  float tri=step(-.36,q.y)*step(abs(q.x),(.46-q.y)*.42);
+  float edge=smoothstep(.0,.05,(.46-q.y)*.42-abs(q.x));
+  vec3 col=mix(vec3(1.),vec3(.45,.78,1.),smoothstep(-.3,.4,q.y));
+  gl_FragColor=vec4(col*(1.1-edge*.35),tri*a*.9);
+}`;
+  const TVS = `attribute vec4 s;attribute vec2 c;uniform float t,asp,sc;varying float u;varying float v;
+void main(){
+  float per=4.5+s.z*4.;
+  float cyc=fract(t/per+s.w);
+  float k=cyc/.24;
+  u=(c.x+1.)*.5;v=c.y;
+  if(k>1.){gl_Position=vec4(3.,3.,0.,1.);return;}
+  vec2 dA=normalize(vec2(-1.,-.3));vec2 pA=vec2(-dA.y,dA.x);
+  vec2 H=vec2((.8+s.x*.5)*asp,.15+s.y*.8)+dA*k*(2.4+s.z*1.2)*asp*.9;
+  vec2 T=H-dA*(.45+s.z*.35);
+  float fade=smoothstep(0.,.12,k)*(1.-smoothstep(.75,1.,k));
+  vec2 p=mix(T,H,u)+pA*c.y*mix(.0015,.007,u);
+  gl_Position=vec4(p.x/asp,p.y*2.-1.,0.,1.);
+  u=u*fade;
+}`;
+  const TFS = `precision mediump float;varying float u;varying float v;
+void main(){
+  float a=pow(clamp(u,0.,1.),2.2)*exp(-v*v*3.2);
+  gl_FragColor=vec4(vec3(.78,.92,1.)*(1.+u),a*1.3);
+}`;
+  const LVS = `attribute vec4 s;uniform float t,dpr,hh,asp,sc;varying float a;varying float rot;varying float fl;varying vec3 col;
+void main(){
+  float sp=.035+s.z*.07;
+  float x=1.25-fract(t*sp+s.w+sc*.35*(.4+s.z))*2.5;
+  float y=(s.y*1.5-.55)+sin(t*(.7+s.z*.8)+s.w*40.)*.06-(1.25-x)*.05;
+  gl_Position=vec4(x,y,0.,1.);
+  gl_PointSize=(7.+s.z*s.z*22.)*dpr*(hh/800.);
+  a=.9*smoothstep(-1.25,-1.05,x)*smoothstep(1.25,1.05,x);
+  rot=t*(.6+s.z*1.6)*(s.y>.5?1.:-1.)+s.w*6.;
+  fl=sin(t*(1.+s.z*2.)+s.w*20.);
+  col=mix(vec3(.22,.36,.16),vec3(.62,.42,.15),s.x);
+}`;
+  const LFS = `precision mediump float;varying float a;varying float rot;varying float fl;varying vec3 col;
+void main(){
+  vec2 q=gl_PointCoord-.5;float c=cos(rot),sn=sin(rot);q=vec2(c*q.x-sn*q.y,sn*q.x+c*q.y);
+  float f=max(.25,abs(fl));
+  float e=pow(q.x/.46,2.)+pow(q.y/(.2*f),2.);
+  float al=smoothstep(1.,.75,e)*a;
+  float rib=smoothstep(.03,0.,abs(q.y))*.25;
+  gl_FragColor=vec4(col*(.85+rib+.2*fl),al);
+}`;
+  function sh(type, code){
+    const s = gl.createShader(type); gl.shaderSource(s, code); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  function mk(vs, fs){
+    const p = gl.createProgram();
+    gl.attachShader(p, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(p, sh(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+    return p;
+  }
+  function initGL(){
+    try {
+      gl = cgl.getContext('webgl', {alpha:false, antialias:false});
+      if (!gl) return false;
+      prog1 = mk(VS, FS); prog2 = mk(PVS, PFS); prog3 = mk(SVS, SFS); prog4 = mk(TVS, TFS); prog5 = mk(LVS, LFS);
+      const quad = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+      pcount = CFG.fx.particles ? (isMobile ? CFG.fx.particles/2 : CFG.fx.particles) : 0;
+      const pd = new Float32Array(pcount * 4);
+      for (let i = 0; i < pd.length; i++) pd[i] = Math.random();
+      pbuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, pbuf);
+      gl.bufferData(gl.ARRAY_BUFFER, pd, gl.STATIC_DRAW);
+      scount = CFG.fx.shards ? (isMobile ? Math.round(CFG.fx.shards*.6) : CFG.fx.shards) : 0;
+      const sd = new Float32Array(scount * 4); for (let i = 0; i < sd.length; i++) sd[i] = Math.random();
+      sbuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, sbuf); gl.bufferData(gl.ARRAY_BUFFER, sd, gl.STATIC_DRAW);
+      tcount = CFG.fx.stars || 0;
+      if (tcount) {
+        const cs = [[-1,-1],[1,-1],[-1,1],[-1,1],[1,-1],[1,1]], td = [];
+        for (let i = 0; i < tcount; i++) { const r = [Math.random(), Math.random(), Math.random(), (i + Math.random() * .6) / tcount]; for (const c of cs) td.push(...r, ...c); }
+        tbuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, tbuf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(td), gl.STATIC_DRAW);
+      }
+      lcount = CFG.fx.leaves ? (isMobile ? Math.round(CFG.fx.leaves * .55) : CFG.fx.leaves) : 0;
+      if (lcount) {
+        const ld = new Float32Array(lcount * 4); for (let i = 0; i < ld.length; i++) ld[i] = Math.random();
+        lbuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, lbuf); gl.bufferData(gl.ARRAY_BUFFER, ld, gl.STATIC_DRAW);
+      }
+      slots = [0, 1].map(u => {
+        const tex = gl.createTexture();
+        gl.activeTexture(gl.TEXTURE0 + u); gl.bindTexture(gl.TEXTURE_2D, tex);
+        for (const [k, val] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR],[gl.TEXTURE_MAG_FILTER, gl.LINEAR],
+          [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE],[gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, val);
+        return {tex, idx: -1, unit: u};
+      });
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.useProgram(prog1);
+      for (const k of ['A','B','mv','t','fx','ar','res']) uni[k] = gl.getUniformLocation(prog1, k);
+      gl.uniform1i(uni.A, 0); gl.uniform1i(uni.B, 1);
+      for (const k of ['t','dpr','hh']) uni['p' + k] = gl.getUniformLocation(prog2, k);
+      uni.quadP = gl.getAttribLocation(prog1, 'p'); uni.partS = gl.getAttribLocation(prog2, 's');
+      for (const k of ['t','dpr','hh','asp','amt']) uni['s' + k] = gl.getUniformLocation(prog3, k);
+      uni.shardS = gl.getAttribLocation(prog3, 's');
+      for (const k of ['t','asp','sc']) uni['t_' + k] = gl.getUniformLocation(prog4, k);
+      uni.tS = gl.getAttribLocation(prog4, 's'); uni.tC = gl.getAttribLocation(prog4, 'c');
+      for (const k of ['t','dpr','hh','asp','sc']) uni['l_' + k] = gl.getUniformLocation(prog5, k);
+      uni.lS = gl.getAttribLocation(prog5, 's');
+      uni.quad = quad;
+      return true;
+    } catch (e) { console.warn('WebGL off:', e); return false; }
+  }
+  function upload(slot, idx){
+    if (slot.idx === idx) return;
+    gl.activeTexture(gl.TEXTURE0 + slot.unit); gl.bindTexture(gl.TEXTURE_2D, slot.tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, imgs[idx]);
+    slot.idx = idx;
+  }
+  function fallback2d(){
+    mode = '2d'; cgl.style.display = 'none'; c2d.style.display = 'block'; c2d.style.opacity = 1; lastDrawn = -1;
+  }
+  function renderGL(pos, time){
+    const i0 = nearest(Math.floor(pos)), i1 = nearest(Math.min(Math.floor(pos) + 1, TOTAL - 1));
+    if (i0 < 0) return;
+    try { upload(slots[0], i0); upload(slots[1], i1 < 0 ? i0 : i1); }
+    catch (e) { console.warn('texture error → 2D fallback', e); fallback2d(); return; }
+    const fx = reduce ? 0 : 1;
+    gl.viewport(0, 0, cgl.width, cgl.height);
+    gl.disable(gl.BLEND);
+    gl.useProgram(prog1);
+    gl.bindBuffer(gl.ARRAY_BUFFER, uni.quad);
+    gl.enableVertexAttribArray(uni.quadP); gl.vertexAttribPointer(uni.quadP, 2, gl.FLOAT, false, 0, 0);
+    gl.uniform1f(uni.mv, pos - Math.floor(pos)); gl.uniform1f(uni.t, time);
+    gl.uniform1f(uni.fx, fx); gl.uniform1f(uni.ar, ar); gl.uniform2f(uni.res, cgl.width, cgl.height);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    gl.disableVertexAttribArray(uni.quadP);
+    if (!reduce) {
+      gl.useProgram(prog2); gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      gl.bindBuffer(gl.ARRAY_BUFFER, pbuf);
+      gl.enableVertexAttribArray(uni.partS); gl.vertexAttribPointer(uni.partS, 4, gl.FLOAT, false, 0, 0);
+      gl.uniform1f(uni.pt, time); gl.uniform1f(uni.pdpr, cgl.width / innerWidth); gl.uniform1f(uni.phh, cgl.height);
+      gl.drawArrays(gl.POINTS, 0, pcount);
+      gl.disableVertexAttribArray(uni.partS);
+      if (scount) {
+        gl.useProgram(prog3); gl.bindBuffer(gl.ARRAY_BUFFER, sbuf);
+        gl.enableVertexAttribArray(uni.shardS); gl.vertexAttribPointer(uni.shardS, 4, gl.FLOAT, false, 0, 0);
+        gl.uniform1f(uni.st, time); gl.uniform1f(uni.sdpr, cgl.width / innerWidth); gl.uniform1f(uni.shh, cgl.height);
+        gl.uniform1f(uni.sasp, cgl.width / cgl.height); gl.uniform1f(uni.samt, 1);
+        gl.drawArrays(gl.POINTS, 0, scount);
+        gl.disableVertexAttribArray(uni.shardS);
+      }
+      const asp = cgl.width / cgl.height, sc = pos / (TOTAL - 1);
+      if (tcount) {
+        gl.useProgram(prog4); gl.bindBuffer(gl.ARRAY_BUFFER, tbuf);
+        gl.enableVertexAttribArray(uni.tS); gl.vertexAttribPointer(uni.tS, 4, gl.FLOAT, false, 24, 0);
+        gl.enableVertexAttribArray(uni.tC); gl.vertexAttribPointer(uni.tC, 2, gl.FLOAT, false, 24, 16);
+        gl.uniform1f(uni.t_t, time); gl.uniform1f(uni.t_asp, asp); gl.uniform1f(uni.t_sc, sc);
+        gl.drawArrays(gl.TRIANGLES, 0, tcount * 6);
+        gl.disableVertexAttribArray(uni.tS); gl.disableVertexAttribArray(uni.tC);
+      }
+      if (lcount) {
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        gl.useProgram(prog5); gl.bindBuffer(gl.ARRAY_BUFFER, lbuf);
+        gl.enableVertexAttribArray(uni.lS); gl.vertexAttribPointer(uni.lS, 4, gl.FLOAT, false, 0, 0);
+        gl.uniform1f(uni.l_t, time); gl.uniform1f(uni.l_dpr, cgl.width / innerWidth); gl.uniform1f(uni.l_hh, cgl.height);
+        gl.uniform1f(uni.l_asp, asp); gl.uniform1f(uni.l_sc, sc);
+        gl.drawArrays(gl.POINTS, 0, lcount);
+        gl.disableVertexAttribArray(uni.lS);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      }
+    }
+    cgl.style.opacity = 1;
+  }
+
+  /* ---------- 2D（WebGLが使えない時の予備） ---------- */
+  function put(img, alpha){
+    const cw = c2d.width, ch = c2d.height;
+    const s = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+    const w = img.naturalWidth * s, h = img.naturalHeight * s;
+    ctx.globalAlpha = alpha; ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h); ctx.globalAlpha = 1;
+  }
+  function draw2d(pos){
+    const i = nearest(Math.floor(pos)); if (i < 0) return;
+    const j = nearest(Math.min(Math.floor(pos) + 1, TOTAL - 1));
+    put(imgs[i], 1); if (j >= 0 && j !== i) put(imgs[j], pos - Math.floor(pos));
+    lastDrawn = pos;
+  }
+
+  function resize(){
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c2d.width = innerWidth * dpr; c2d.height = innerHeight * dpr;
+    const g = Math.min(dpr, 1.5);
+    cgl.width = Math.round(innerWidth * g); cgl.height = Math.round(innerHeight * g);
+    lastDrawn = -1;
+  }
+  addEventListener('resize', resize); resize();
+  if (!initGL()) fallback2d();
+
+  /* ---------- 読み込み ---------- */
+  const probe = b => new Promise(r => { const im = new Image(); im.onload = () => r(im); im.onerror = () => r(null); im.src = b + 'frame_001.webp'; });
+  function load(i){
+    return new Promise(res => {
+      const im = new Image(); im.decoding = 'async'; im.ok = false;
+      im.onload = () => { im.ok = true; done(); }; im.onerror = done;
+      function done(){
+        loaded++; const p = Math.round(loaded / TOTAL * 100);
+        bar.style.width = p + '%'; pct.textContent = p + '%'; res();
+      }
+      im.src = src(i + 1); imgs[i] = im;
+    });
+  }
+  (async () => {
+    const hide = () => loader.classList.add('done');
+    setTimeout(hide, 8000);                        // 何があっても8秒で表示
+    for (const b of BASES) { const im = await probe(b); if (im) { base = b; ar = im.naturalWidth / im.naturalHeight; break; } }
+    if (base === null) { console.warn('frames not found: poster only'); hide(); return; }
+    await load(0);
+    let next = 1;
+    const worker = async () => { while (next < TOTAL) await load(next++); };
+    await Promise.all(Array.from({length: 8}, worker));
+    hide();
+  })();
+
+  /* ---------- スクロール連動 ---------- */
+  const clamp = (v,a,b) => Math.min(b, Math.max(a, v));
+  const progress = () => { const r = stage.getBoundingClientRect(); return clamp(-r.top / (stage.offsetHeight - innerHeight), 0, 1); };
+  const t0 = performance.now();
+
+  function tick(){
+    const p = progress();
+    const target = p * (TOTAL - 1);
+    current += (target - current) * 0.12;
+    if (Math.abs(target - current) < 0.01) current = target;
+    if (base !== null && !document.hidden) {
+      if (mode === 'gl') renderGL(current, (performance.now() - t0) / 1000);
+      else if (Math.abs(current - lastDrawn) > 0.005) draw2d(current);
+    }
+    const z = `scale(${1 + p * CFG.zoom})`; c2d.style.transform = z; cgl.style.transform = z;
+    prog.style.height = (p * 100) + '%';
+    for (const el of layers){
+      const a = +el.dataset.in, b = +el.dataset.out, f = 0.04;
+      let o = 0;
+      if (p >= a - f && p <= b + f) o = Math.min(clamp((p - (a - f)) / f, 0, 1), clamp(((b + f) - p) / f, 0, 1));
+      if (a === 0 && p < b) o = clamp((b - p) / f, 0, 1);
+      el.style.opacity = o; el.style.transform = `translateY(${(1 - o) * 30}px)`;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+})();
+</script>
+</body>
+</html>
